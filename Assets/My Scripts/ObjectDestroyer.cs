@@ -4,8 +4,22 @@ using System.Collections;
 public class ObjectDestroyer : MonoBehaviour {
 
 	public GameObject canvas;
+
+	private AudioSource audioSource;
+	public AudioClip gameOverSound;
+	public float volume;
+
 	void Start () {
 
+	}
+
+	void Awake()
+	{
+		audioSource = GetComponent<AudioSource>();
+	}
+	void PlayGameOverSound()
+	{
+		audioSource.PlayOneShot(gameOverSound, volume);
 	}
 
 	// Update is called once per frame
@@ -29,7 +43,8 @@ public class ObjectDestroyer : MonoBehaviour {
 	public void MostrarGameOver()
 	{
 		canvas.SetActive (true);
-		StopTime ();
+		PlayGameOverSound ();
+		//StopTime ();
 	}
 
 	void StopTime()

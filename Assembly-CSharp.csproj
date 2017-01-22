@@ -48,6 +48,7 @@
      <Compile Include="Assets\My Scripts\AdvancedTextRendering.cs" />
      <Compile Include="Assets\My Scripts\BaseCharacter.cs" />
      <Compile Include="Assets\My Scripts\GameController.cs" />
+     <Compile Include="Assets\My Scripts\InfoController.cs" />
      <Compile Include="Assets\My Scripts\IntroController.cs" />
      <Compile Include="Assets\My Scripts\ObjectDestroyer.cs" />
      <Compile Include="Assets\My Scripts\OlaController.cs" />

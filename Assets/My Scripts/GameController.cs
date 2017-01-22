@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
 
 	private AudioSource audioSource;
 	public AudioClip coinSound;
+	public AudioClip civilSound;
 	public float volume;
 
 	void Start()
@@ -47,6 +48,7 @@ public class GameController : MonoBehaviour
 	}
 	public void IncreaseCivilians()
 	{
+		PlayCivilSound ();
 		civilians++;
 	}
 
@@ -63,6 +65,11 @@ public class GameController : MonoBehaviour
 	void PlayCoinSound()
 	{
 		audioSource.PlayOneShot(coinSound, volume);
+	}
+
+	void PlayCivilSound()
+	{
+		audioSource.PlayOneShot(civilSound, volume);
 	}
 
 
@@ -94,8 +101,5 @@ public class GameController : MonoBehaviour
 
 		Color c = GUI.backgroundColor;
 		GUI.backgroundColor = Color.clear;
-
-
-
 	}
 }

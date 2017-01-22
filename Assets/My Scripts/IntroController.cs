@@ -29,6 +29,11 @@ public class IntroController : MonoBehaviour {
 		Application.LoadLevel("Level1");
 	}
 
+	public void IrAInfo()
+	{
+		Application.LoadLevel("Info");
+	}
+
 	public void MostrarOla()
 	{
 		GameObject newGameObject = Instantiate(Ola);

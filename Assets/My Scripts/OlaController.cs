@@ -8,6 +8,19 @@ public class OlaController : MonoBehaviour {
 	public float frecuencia;
 	public float velocidadOla;
 
+	private AudioSource audioSource;
+	public AudioClip gameOverSound;
+	public float volume;
+
+	void Awake()
+	{
+		audioSource = GetComponent<AudioSource>();
+	}
+	void PlayGameOverSound()
+	{
+		audioSource.PlayOneShot(gameOverSound, volume);
+	}
+
 	public void OnCollisionEnter2D(Collision2D obj) {
 		if (obj.gameObject.name == "Player") {
 			MostrarGameOver ();
@@ -55,6 +68,7 @@ public class OlaController : MonoBehaviour {
 	{
 		canvas.SetActive (true);
 		SpawnPlayerDead ();
+		PlayGameOverSound ();
 		//StopTime ();
 	}
 
