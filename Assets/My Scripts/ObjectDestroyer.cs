@@ -5,21 +5,12 @@ public class ObjectDestroyer : MonoBehaviour {
 
 	public GameObject canvas;
 
-	private AudioSource audioSource;
-	public AudioClip gameOverSound;
-	public float volume;
+	AudioSource audio_game;
+	public AudioClip audioGameOver;
 
 	void Start () {
-
-	}
-
-	void Awake()
-	{
-		audioSource = GetComponent<AudioSource>();
-	}
-	void PlayGameOverSound()
-	{
-		audioSource.PlayOneShot(gameOverSound, volume);
+		GameObject audio = GameObject.FindGameObjectWithTag ("Sound");
+		audio_game = audio.GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -28,22 +19,23 @@ public class ObjectDestroyer : MonoBehaviour {
 	}
 	public void OnCollisionEnter2D(Collision2D obj) {
 		Destroy (obj.gameObject);
-		if (obj.gameObject.name == "Player") {
+		if (obj.gameObject.tag == "Player") {
 			MostrarGameOver ();
 		}
 	}
 
 	public void OnTriggerEnter2D(Collider2D node) {
 		Destroy(node.gameObject);
-		if (node.gameObject.name == "Player") {
+		if (node.gameObject.tag == "Player") {
 			MostrarGameOver ();
 		}
 	}
 
 	public void MostrarGameOver()
 	{
+		audio_game.Stop();
 		canvas.SetActive (true);
-		PlayGameOverSound ();
+
 		//StopTime ();
 	}
 
@@ -51,7 +43,4 @@ public class ObjectDestroyer : MonoBehaviour {
 	{
 		Time.timeScale = 0.00001f;
 	}
-
-
-
 }
